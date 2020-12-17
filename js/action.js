@@ -53,17 +53,14 @@ let select;
 const render = () => {
     var html = ' ';
     for (var i = 0; i < authors.length; i++) {
-        html += `<li onclick={selectauthor(${authors[i]})}><a href="#">  +` + authors[i] + `</a></li>`;
+        html += `<li onclick={selectauthor(${i})}><a href="#">  +` + authors[i] + `</a></li>`;
     }
     document.getElementById("myUL").innerHTML = html;
 
 }
 let author = ' ';
 const selectauthor = (select) => {
-    author = select;
-    console.log(author);
-
-
+    document.getElementById("myInput").value = authors[select];
 }
 
 
