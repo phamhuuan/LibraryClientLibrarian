@@ -1,0 +1,98 @@
+.container {
+    margin-top: 10px;
+}
+
+.search {
+    display: flex;
+    margin: 10px;
+}
+
+.search i {
+    color: gray;
+}
+
+.search button {
+    border: 1px solid gray;
+    background: rgb(240, 235, 235);
+}
+
+.search button:hover {
+    border: 1px solid gray;
+    background: rgb(218, 204, 204);
+}
+
+.nav li {
+    display: block;
+}
+
+.nav li:hover {
+    background: gray;
+}
+
+.book_them {
+    border: 1px solid rgb(66, 65, 65);
+    padding: 10px;
+    width: 600px;
+    margin-top: 50px;
+    display: none;
+}
+
+.submit_button {
+    margin-left: 500px;
+    margin-top: 5px;
+}
+
+.add_book {
+    margin-left: 900px;
+    margin-top: 5px;
+}
+
+.table {
+    margin-top: 10px;
+}
+
+#name,
+#author,
+#room,
+#quantity,
+#birthday {
+    padding: 8px 12px;
+    /* border: 1px solid rgb(27, 26, 26); */
+    border-radius: 5px;
+    background: #f1f1f1;
+    width: 500px;
+}
+
+.author,
+.theloai {
+    display: none;
+}
+
+#myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 6px 20px 6px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#myUL {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#myUL li a {
+    border: 1px solid #ddd;
+    margin-top: -1px;
+    /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block
+}
