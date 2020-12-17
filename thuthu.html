@@ -42,21 +42,31 @@
             <input style="width: 1000px;" type="text" class="form-control" value="" required="required" placeholder="search">
             <button><i  class="fa">&#xf002;</i></button>
         </div>
-        <button class="add_book" style="font-size:24px"><i class="fa fa-plus">Add book</i></button>
+        <button class="add_book" style="font-size:24px" onclick="AddBook()"><i class="fa fa-plus">Add book</i></button>
         <div class="search author">
             <input style="width: 1000px;" type="text" class="form-control" value="" required="required" placeholder="enter author">
             <button><i  class="fa">&#xf002;</i></button>
         </div>
 
+        <div id="AuthorSearch">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+            <button type="button" id="nextAuthor" class="btn btn-primary" onclick="clickInputBook()">Primary</button>
+            <ul id="myUL"> </ul>
 
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        </div>
 
-        <ul id="myUL"> </ul>
-        <div class="book_them">
+        <div id="BookSearch">
+            <input type="text" id="myInputBook" onkeyup="myFunctionBook()" placeholder="Search for book.." title="Type in a book">
+            <button type="button" id="next" class="btn btn-primary" onclick="clickButtonNext()">Primary</button>
+            <ul id="myULBook"> </ul>
+
+        </div>
+
+        <div id="book_them">
             <label>Name </label>
-            <input type="text" id="name" class="form-control" placeholder="Enter name">
+            <p id="name"></p>
             <label>Tac gia </label>
-            <input type="text" id="author" class="form-control" placeholder="Enter author ">
+            <p id="author"></p>
             <label>Phong  </label>
             <input type="text " id="room" class="form-control" placeholder="Enter room ">
             <label>Number </label>
@@ -69,7 +79,7 @@
 
         </div>
 
-        <table class="table table-striped ">
+        <table id="tableList" class="table table-striped ">
             <thead>
                 <tr>
                     <th>Name</th>

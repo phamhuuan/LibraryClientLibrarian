@@ -29,7 +29,7 @@
     background: gray;
 }
 
-.book_them {
+#book_them {
     border: 1px solid rgb(66, 65, 65);
     padding: 10px;
     width: 600px;
@@ -51,8 +51,6 @@
     margin-top: 10px;
 }
 
-#name,
-#author,
 #room,
 #quantity,
 #birthday {
@@ -68,7 +66,8 @@
     display: none;
 }
 
-#myInput {
+#myInput,
+#myInputBook {
     background-image: url('/css/searchicon.png');
     background-position: 10px 12px;
     background-repeat: no-repeat;
@@ -77,15 +76,24 @@
     padding: 6px 20px 6px 40px;
     border: 1px solid #ddd;
     margin-bottom: 12px;
+    margin-top: 10px;
+    width: 700px;
 }
 
-#myUL {
+
+/* #next {
+    flex-direction: row;
+} */
+
+#myUL,
+#myULBook {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-#myUL li a {
+#myUL li a,
+#myULBook li a {
     border: 1px solid #ddd;
     margin-top: -1px;
     /* Prevent double borders */
@@ -95,4 +103,13 @@
     font-size: 18px;
     color: black;
     display: block
+}
+
+#AuthorSearch,
+#BookSearch {
+    display: none;
+}
+
+#tableList {
+    display: none;
 }
