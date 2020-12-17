@@ -5,6 +5,7 @@ var namebook = [{ "_id": "5fa3fd6dd8637cc97e4abc2d", "name": "Administrative law
 var authors = ["Alanin", "Susu", "kaka", "mama"];
 
 function renderView() {
+		getGenre();
     var html = ' ';
     for (var i = 0; i < books.length; i++) {
         var book = books[i];
@@ -53,7 +54,7 @@ let select;
 const render = () => {
     var html = ' ';
     for (var i = 0; i < authors.length; i++) {
-        html += `<li onclick={selectauthor(${authors[i]})}><a href="#">  +` + authors[i] + `</a></li>`;
+        html += `<li onclick={selectauthor(${authors[i]})}><a href="#">+${authors[i]}</a></li>`;
     }
     document.getElementById("myUL").innerHTML = html;
 
@@ -84,6 +85,16 @@ function myFunction() {
     }
 
 }
+
+const getGenre = () => {
+	const xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		console.log(this.responseText);
+	}
+	xhttp.open('GET', 'https://library-sevice.herokuapp.com/getGenres', true);
+	xhttp.send();
+}
+
 renderView();
 
 render();
