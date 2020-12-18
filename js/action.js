@@ -1,23 +1,26 @@
 var books = [
 
 ];
+var nameBook;
+var nameAuthor;
+
 var namebook = [{ "_id": "5fa3fd6dd8637cc97e4abc2d", "name": "Bdministrative law", "__v": 0, "genreId": "5fa3fd6dd8637cc97e4abc2d" }, { "_id": "5fa3fd6dd8637cc97e4abc39", "name": "hgriculture", "__v": 0, "genreId": "5fa3fd6dd8637cc97e4abc39" }, { "_id": "5fa3fd6dd8637cc97e4abc14", "name": "Algebra", "__v": 0, "genreId": "5fa3fd6dd8637cc97e4abc14" }, { "_id": "5fa3fd6dd8637cc97e4abc47", "name": "Cnalog", "__v": 0, "genreId": "5fa3fd6dd8637cc97e4abc47" }, { "_id": "5fa3fd6dd8637cc97e4abc15", "name": "Analytics", "__v": 0, "genreId": "5fa3fd6dd8637cc97e4abc15" }, { "_id": "5fa3fd6dd8637cc97e4abc3f", "name": "Anatomy", "__v": 0, "genreId": "5fa3fd6dd8637cc97e4abc3f" }, { "_id": "5fa3fd6dd8637cc97e4abc77", "name": "Ancient civilization", "__v": 0, "genreId": "5fa3fd6dd8637cc97e4abc77" }, { "_id": "5fa3fd6dd8637cc97e4abc54", "name": "Ancient history", "__v": 0, "genreId": "5fa3fd6dd8637cc97e4abc54" }];
 var authors = ["Alanin", "Susu", "kaka", "mama"];
 
 function renderView() {
-    getGenre();
+    // getGenre();
     var html = ' ';
     for (var i = 0; i < books.length; i++) {
         var book = books[i];
         html += '<tr>';
-        html += '<td>' + document.getElementById('myInputBook').value + '</td>';
-        html += ' <td>' + document.getElementById('myInput').value + '</td>';
+        html += '<td>' + book.name + '</td>';
+        html += ' <td>' + book.author + '</td>';
         html += '<td>' + book.room + '</td>';
         html += '<td>' + book.quantily + '</td>';
         html += '<td>' + book.birthday + '</td>';
         html += '<td colspan="2">';
-        html += '<i class="glyphicon glyphicon-trash"></i>';
-        html += '<i class="fa fa-edit"></i>';
+        html += `<i class="glyphicon glyphicon-trash" onclick="deleteBook(${i})"></i>`;
+        html += `<i class="fa fa-edit" onclick="editBook(${i})"></i>`;
         html += '</td>';
         html += '</tr>';
 
@@ -26,33 +29,35 @@ function renderView() {
     book_element.innerHTML = html;
 }
 
+const deleteBook = (index) => {
+
+    books.splice(index, 1);
+    renderView();
+}
 
 
+function submitButton() {
+    var book_name = nameBook;
+    var book_author = nameAuthor;
+    var book_room = document.getElementById('room').value;
+    var book_quanlity = document.getElementById('quantity').value;
+    var book_birthday = document.getElementById('birthday').value;
+    var book_object = {
+        name: book_name,
+        author: book_author,
+        room: book_room,
+        quantily: book_quanlity,
+        birthday: book_birthday,
+    }
+    books.push(book_object);
+    document.getElementById('book_them').style.display = "none";
+    document.getElementById('tableList').style.display = "block";
+    // document.getElementById('book_infomation').style.display = "none";
+    renderView();
 
-document.addEventListener('DOMContentLoaded', function() {
 
-    // document.getElementById('name').innerHTML = name;
-    // console.log(book_name);
-    document.getElementById('author').innerHTML = document.getElementById('myInput').value;
-    var submit_element = document.getElementById('submit');
-    submit_element.addEventListener('click', function() {
+}
 
-        var book_room = document.getElementById('room').value;
-        var book_quanlity = document.getElementById('quantity').value;
-        var book_birthday = document.getElementById('birthday').value;
-        var book_object = {
-            // name: book_name,
-            // author: book_author,
-            room: book_room,
-            quantily: book_quanlity,
-            birthday: book_birthday,
-        }
-        books.push(book_object);
-        document.getElementById('tableList').style.display = "block";
-        renderView();
-
-    })
-});
 
 let select;
 // function myFunction() {
@@ -118,29 +123,56 @@ function myFunctionBook() {
 
 }
 
-const getGenre = () => {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        console.log(this.responseText);
-    }
-    xhttp.open('GET', 'https://library-sevice.herokuapp.com/getGenres', true);
-    xhttp.send();;
-}
+// const getGenre = () => {
+//     const xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function() {
+//         console.log(this.responseText);
+//     }
+//     xhttp.open('GET', 'https://library-sevice.herokuapp.com/getGenres', true);
+//     xhttp.send();;
+// }
 
 function clickButtonNext() {
+    nameBook = document.getElementById("myInputBook").value;
+    document.getElementById('name').innerHTML = nameBook;
     document.getElementById("BookSearch").style.display = "none";
     document.getElementById("AuthorSearch").style.display = "block";
 }
 
 function clickInputBook() {
+    nameAuthor = document.getElementById("myInput").value;
+    document.getElementById('author').innerHTML = nameAuthor;
     document.getElementById("AuthorSearch").style.display = "none";
     document.getElementById("book_them").style.display = "block";
+    // submitButton();
 }
 
 function AddBook() {
     document.getElementById("BookSearch").style.display = "block";
+
+    // console.log(book_name);
+
+    document.getElementById("AuthorSearch").style.display = "none";
+    document.getElementById("book_them").style.display = "none";
+    document.getElementById("tableList").style.display = "none";
 }
 
-renderView();
+function editName() {
+    document.getElementById("BookSearch").style.display = "block";
+    document.getElementById("book_them").style.display = "none";
+    var next_element = document.getElementById("next");
+    next_element.addEventListener('click', function() {
+        document.getElementById("book_them").style.display = "block";
+        document.getElementById("AuthorSearch").style.display = "none";
+    })
+}
+
+function editAuthor() {
+    document.getElementById("AuthorSearch").style.display = "block";
+    document.getElementById("book_them").style.display = "none";
+}
+
+
+// renderView();
 rendeBook();
 render();

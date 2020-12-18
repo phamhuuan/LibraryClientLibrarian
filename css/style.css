@@ -113,3 +113,33 @@
 #tableList {
     display: none;
 }
+
+table,
+td,
+th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 1024px;
+}
+
+th,
+td {
+    padding: 15px;
+    width: 200px;
+}
+
+.glyphicon {
+    width: 100px;
+}
+
+.chooseName {
+    display: flex;
+}
+
+#editelement {
+    height: 32px;
+}
